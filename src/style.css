@@ -1,0 +1,18 @@
+.k{font-size: 16px;
+  font-size: max(16px, 1em);
+  margin-top: 5px;
+  font-family: inherit;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 4px;}
+  
+
+
+.b {background-color: #4CAF50; 
+  border: none;
+  margin-left: 10px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;}
