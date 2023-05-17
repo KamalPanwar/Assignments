@@ -1,17 +1,32 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import "./style.css";
 
 
+ 
 export default function App() {
-  const[number,setnumber]=useState('')
-  if(number>=3000){
-    alert('congratulations you guessed the right number')
-  }
+  
+
+  const [data,setData]=useState()
+  async function fetchQuote(){
+   try{  const response= await fetch("https://api.quotable.io/random")
+    const data= await response.json()
+    
+    setData(data.content)
+    console.log(data)
+      } catch(e){
+          console.log(e)
+      }
+    }
+
+ useEffect(()=>{
+   fetchQuote()
+ },[])
+
   return (
     <div>
-   <input className="k" type="text" value={number} onChange={e=>setnumber(e.target.value)} placeholder="Guess The lucky number...."/>
-   <button className="b">Match Number</button>
-
+      
+      <p>{data}</p>
+      <button onClick={fetchQuote}>click</button>
     </div>
   );
 }
