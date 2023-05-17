@@ -1,17 +1,39 @@
-import React,{useState} from "react";
-import "./style.css";
+import React, { useState } from "react";
 
+function PixelToRemConverter() {
+  const [pixelValue, setPixelValue] = useState("");
+  const [remValue, setRemValue] = useState("");
 
-export default function App() {
-  const[number,setnumber]=useState('')
-  if(number>=3000){
-    alert('congratulations you guessed the right number')
-  }
+  const handlePixelChange = (event) => {
+    const pixelValue = event.target.value;
+    setPixelValue(pixelValue);
+    setRemValue(pixelValue / 16);
+  };
+
+  const handleRemChange = (event) => {
+    const remValue = event.target.value;
+    setRemValue(remValue);
+    setPixelValue(remValue * 16);
+  };
+
   return (
-    <div>
-   <input className="k" type="text" value={number} onChange={e=>setnumber(e.target.value)} placeholder="Guess The lucky number...."/>
-   <button className="b">Match Number</button>
+    <>
+    <h3 style={{textAlign:'center'}}>PX to REM converter </h3>
+    <div style={{display:'flex', justifyContent:'center', gap:'1rem'}}>
 
+      <label style={{textAlign:'center'}}>
+        Pixels <br/>
+        <input type="number" value={pixelValue} onChange={handlePixelChange} />
+      </label>
+      
+      <label style={{textAlign:'center'}}>
+        Rem <br/>
+        <input type="number" value={remValue} onChange={handleRemChange} />
+      </label>
+      
     </div>
+    </>
   );
 }
+
+export default PixelToRemConverter;
